@@ -25,58 +25,36 @@ import pygame
 import random
 import sys
 
-# Constants
-windowWidth = 800
-windowHeight = 600
-gridSize = 20
-gridWidth = windowWidth // gridSize
-gridHeight = windowHeight // gridSize
-FPS = 10
-
-# Colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-
-# Snake Class
 class Snake:
-    # Initialize the snake with a single segment
+
     def __init__(self):
         self.body = [[gridWidth // 2, gridHeight // 2]]
         self.direction = (0, 0)  # Don't start til keypress
         self.grow = False
 
-    # Move the snake
     def move(self):
-        # Get the current head position
         head_x, head_y = self.body[0]
-        # Calculate the new head position
         delta_x, delta_y = self.direction
         new_head = [head_x + delta_x, head_y + delta_y]
         
         if not self.grow:
-            self.body.pop()  # Remove the tail unless growing
+            self.body.pop()
         else:
             self.grow = False
-        self.body.insert(0, new_head)  # Add the new head position
+        self.body.insert(0, new_head)  
 
-    # Change the direction of the snake
     def change_direction(self, new_direction):
         opposite = (-self.direction[0], -self.direction[1])
-        if new_direction != opposite:  # Prevent moving directly backward
+        if new_direction != opposite:  
             self.direction = new_direction
-
-    # Grow the snake
+            
     def grow_snake(self):
         self.grow = True
 
     def check_collision(self):
         head = self.body[0]
-        # Check if the snake collides with itself
         if head in self.body[1:]:
             return True
-        # Check if the snake hits the walls
         if head[0] < 0 or head[0] >= gridWidth or head[1] < 0 or head[1] >= gridHeight:
             return True
         return False
