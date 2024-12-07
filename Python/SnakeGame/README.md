@@ -46,7 +46,3 @@ or the wall.
 There are also additional tests in the Test directory that can demonstrate the game's functionality.
 These tests are python unittests, and can be run using the unittest module in Python. Again, we developed
 these tests in PyCharm, which is likely the easiest way to run them.
-
-Beyond the game, we also have some sample code in the Samples directory that is used for sections of the paper
-to demonstrate other aspects of Python. These are not required to run the game, but are included for reference.
-There is an additional Tests directory within the Samples directory that contains tests for the sample code.
