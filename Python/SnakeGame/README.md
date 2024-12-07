@@ -1,48 +1,75 @@
-# Snake
+# CSCI 5448 Grad Project: Implementation of Snake and OOP Concepts
+This project demonstrates the use of Object-Oriented Programming (OOP) principles and multithreading/multiprocessing techniques in Python. It includes examples of encapsulation, inheritance, and polymorphism, as well as the implementation of the classic Snake game.
 
-A Python project implementing the classic Snake game using Pygame.
+---
 
-## Project Structure
+## **1. Python OOP Examples**
+This section showcases key OOP principles: **Encapsulation**, **Inheritance**, and **Polymorphism**.
 
-- `game.py`: Main game logic and event handling.
-- `snake.py`: Snake class implementation.
-- `food.py`: Food class implementation.
-- `game_state.py`: Game state management.
-- `play_game.py`: Script to start the game.
-- `Tests/`: Unit tests for the game components.
-- `Sound/`: Directory containing sound effects.
+### **Encapsulation (`encapsulation.py`)**
+- Demonstrates controlled access to private attributes using Python's `@property` decorator.
+- The `Character` class encapsulates its health attribute, ensuring it cannot drop below zero.
+- **Key Features**:
+    - Encapsulation via protected attributes.
+    - Controlled access through getter and setter methods.
+- **Output**:
+  Displays initial health, updates after damage, and ensures health remains non-negative.
 
-## Requirements
+---
 
-This project uses [Pygame](https://www.pygame.org/) for game development. Install the required dependencies using:
+### **Inheritance (`inheritance.py`)**
+- Demonstrates inheritance using an `Animal` base class and its `Dog` and `Cat` subclasses.
+- The subclasses override the `speak` method to provide specific implementations.
+- **Key Features**:
+    - Reuse of a base class.
+    - Method overriding in child classes to showcase polymorphism.
+- **Output**:
+  Shows the unique behaviors of `Dog` and `Cat` through overridden methods.
 
-```sh
-pip install -r requirements.txt
-```
+---
 
-To run the game:
-```sh
-python play_game.py
-```
+### **Polymorphism (`polymorphism.py`)**
+- Demonstrates polymorphism with a `Shape` base class and its `Rectangle` and `Circle` subclasses.
+- Each subclass implements its own versions of `area` and `perimeter` methods.
+- **Key Features**:
+    - Use of a common interface (`Shape`) to handle different subclasses.
+    - Specific implementations of methods in child classes.
+- **Output**:
+  Computes and displays the area and perimeter of different shapes.
 
-## Additional Information
+---
 
-This is a simple snake game made with Python and Pygame. We wanted to
-showcase the simplicity of Pygame and how relatively easy it is to develop.
-The game is made using Pygame's own structure, and while does use classes, does
-not rely on OOP principles. This has pros and cons as we discuss in the paper,
-but it does demonstrate how a single developer or small team can create a simple
-game without building complex class structures.
+## **2. Multithreading and Multiprocessing Demos**
+### **File: `multiprocessingAndmultithreading_demo.py`**
+- Demonstrates sequential, multithreading, and multiprocessing execution models.
+- **Key Features**:
+    - A shared counter is incremented:
+        - Sequentially (no threads or processes).
+        - Using multithreading (multiple threads).
+        - Using multiprocessing (multiple processes).
+    - Execution times are measured and compared for all three methods.
+- **Output**:
+    - Displays the time taken for sequential execution, multithreading, and multiprocessing.
+    - Highlights the efficiency gains of parallelism over sequential execution.
 
-To run the game, you will need to have Python and Pygame installed. Pygame is the
-only dependency, and is listed in the requirements.txt file. We used PyCharm to develop
-and run the game, but so long as you have Pygame it should run.
+---
 
-The game code is divided into the food, game, game_state, and snake files. To run the game
-open the Test directory and run the play_game.py file. This will start the interactive game
-and you can play snake using the arrow keys. The game will end when the snake runs into itself
-or the wall.
+## **3. Snake Game Implementation**
+### **File: `snake_game.py`**
+- Implements the classic Snake game using Pygame, showcasing how OOP principles like encapsulation and inheritance are applied in game development.
+- **Key Features**:
+    - A `Snake` class to manage the player's snake.
+    - A `Game` class to handle the game loop, user input, and rendering.
+    - Utilizes Pygame for graphical output and event handling.
+- **Usage**:
+    - Run the script to play the Snake game.
+    - Move the snake using arrow keys, and avoid collisions with the screen borders or the snake itself.
+- **Output**:
+    - Interactive game that ends when the snake collides with itself or the screen borders.
 
-There are also additional tests in the Test directory that can demonstrate the game's functionality.
-These tests are python unittests, and can be run using the unittest module in Python. Again, we developed
-these tests in PyCharm, which is likely the easiest way to run them.
+For additional details on the snake game's implementation, see `Snake.md` [here](Snake.md).
+
+---
+
+## **Conclusion**
+This project highlights Python's versatility in demonstrating OOP principles, implementing games, and leveraging multithreading/multiprocessing for parallelism. Each file serves as a standalone demonstration and can be run independently to explore these concepts in action.
