@@ -11,6 +11,17 @@ Functions:
 Usage:
 Run the script directly to see the demonstration of multiprocessing and multithreading.
 """
+
+
+# Sequential counting function
+def sequential_worker(counter):
+    """Increment the counter sequentially."""
+    for i in range(5):
+        counter += 1
+        print(f"Sequential (No Threads/Processes): Counter incremented to {counter}")
+        # time.sleep(1)
+    return counter
+
 # Function for multiprocessing
 def multiprocessing_worker(counter, lock, process_name):
     """Increment the counter safely using a lock in multiprocessing."""
@@ -18,7 +29,7 @@ def multiprocessing_worker(counter, lock, process_name):
         with lock:
             counter.value += 1
             print(f"{process_name} (Multiprocessing): Counter incremented to {counter.value}")
-        time.sleep(1)
+        # time.sleep(1)
 
 #  Function for multithreading
 def threading_worker(counter, lock, thread_name):
@@ -27,9 +38,23 @@ def threading_worker(counter, lock, thread_name):
         with lock:
             counter[0] += 1
             print(f"{thread_name} (Multithreading): Counter incremented to {counter[0]}")
-        time.sleep(1)
+        # time.sleep(1)
+
 
 if __name__ == "__main__":
+
+    # Sequential Execution
+    print("Starting Sequential Demo")
+    seq_start_time = time.perf_counter()
+
+    seq_counter = 0  # Local counter
+    seq_counter = sequential_worker(seq_counter)
+
+    seq_end_time = time.perf_counter()
+    print(f"Final counter value (Sequential): {seq_counter}")
+    print(f"Time taken (Sequential): {seq_end_time - seq_start_time:.2f} seconds\n")
+
+
     print("Starting Multiprocessing Demo")
     # Measure time for multiprocessing
     mp_start_time = time.perf_counter()
@@ -83,5 +108,9 @@ if __name__ == "__main__":
     print(f"Time taken (Multithreading): {mt_end_time - mt_start_time:.2f} seconds\n")
 
     # Compare efficiency
-    efficiency = (mp_end_time - mp_start_time) / (mt_end_time - mt_start_time)
-    print(f"Efficiency comparison (Multiprocessing/Multithreading): {efficiency}")
+    # efficiency = (mp_end_time - mp_start_time) / (mt_end_time - mt_start_time)
+
+    # Efficiency Comparisons
+    print("Efficiency Comparisons:")
+    print(f"Sequential vs. Multiprocessing: {seq_end_time - seq_start_time:.2f} seconds vs. {mp_end_time - mp_start_time:.2f} seconds")
+    print(f"Sequential vs. Multithreading: {seq_end_time - seq_start_time:.2f} seconds vs. {mt_end_time - mt_start_time:.2f} seconds")
