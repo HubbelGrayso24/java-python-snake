@@ -1,5 +1,6 @@
-from game_state import GameState
 from game import Game
+from game_state import GameState
+
 
 if __name__ == "__main__":
     windowWidth = 800
