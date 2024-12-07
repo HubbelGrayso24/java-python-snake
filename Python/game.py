@@ -3,6 +3,10 @@ import sys
 from snake import Snake
 from food import Food
 
+# Sound effects
+# pygame.mixer.init()
+# pygame.mixer.Sound("Sound\itemPickUp.mp3")
+
 class Game:
     def __init__(self, gameState):
         pygame.init()
@@ -13,6 +17,8 @@ class Game:
         self.food = Food(gameState)
         self.score = 0
         self.gameState = gameState
+        self.pickup_sound = pygame.mixer.Sound("Sound/ItemPickup.mp3")  # Initialize the sound
+
 
     # Arrow keys to change direction
     def handle_events(self):
@@ -38,6 +44,8 @@ class Game:
             self.snake.grow_snake()
             self.food.randomize_position()
             self.score += 1
+            self.pickup_sound.play()  # Play the sound when the snake eats the food
+            
 
         if self.snake.check_collision():
             print(f"Game Over! Your score was: {self.score}")
