@@ -6,13 +6,14 @@ import io.hubbell.fung.snake.Game;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
-    public static void main(String[] args) {
-        if (StartupHelper.startNewJvmIfRequired()) return; // This handles macOS support and helps on Windows.
-        createApplication();
+    public static Lwjgl3Application createPlayableGame() {
+        return new Lwjgl3Application(new Game(), getDefaultConfiguration());
     }
 
-    private static Lwjgl3Application createApplication() {
-        return new Lwjgl3Application(new Game(), getDefaultConfiguration());
+    public static Lwjgl3Application createRandomMovementGame() {
+        Game game = new Game();
+        game.setRandomMovement();
+        return new Lwjgl3Application(game, getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {

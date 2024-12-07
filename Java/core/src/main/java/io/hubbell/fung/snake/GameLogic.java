@@ -18,6 +18,8 @@ public class GameLogic {
     private float accumulator = 0;
     private final float tick = 0.1f;
 
+    private final EatFoodSound eatFoodSound = new EatFoodSound();
+
     public GameLogic(float worldWidth, float worldHeight) {
         this.worldWidth = worldWidth;
         this.worldHeight = worldHeight;
@@ -50,6 +52,7 @@ public class GameLogic {
     // Check the food collision with only the head of the snake
     private void checkFoodCollision() {
         if (snake.collidesWith(food)) {
+            eatFoodSound.play();
             snake.grow();
             spawnFood();
         }
@@ -76,7 +79,13 @@ public class GameLogic {
         }
     }
 
+    public int getSnakeLength() { return snake.getLength(); }
+    public float getSnakeX() { return snake.getX(); }
+    public float getSnakeY() { return snake.getY(); }
+
     // Ensure encapsulation
     public void renderSnake(ShapeRenderer shapeRenderer) { snake.render(shapeRenderer); }
     public void renderFood(ShapeRenderer shapeRenderer) { food.render(shapeRenderer); }
+
+    public void setMovementStrategy(MovementStrategy movementStrategy) { snake.setMovementStrategy(movementStrategy); }
 }

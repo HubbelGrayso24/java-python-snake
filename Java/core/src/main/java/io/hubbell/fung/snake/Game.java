@@ -16,11 +16,14 @@ public class Game extends ApplicationAdapter {
     public static final int WORLD_WIDTH = 640;
     public static final int WORLD_HEIGHT = 480;
 
+    private MovementStrategy snakeMovementStrategy = new DefaultMovementStrategy();
+
     // This is the init function run by LibGDX as part of ApplicationAdaptor
     @Override
     public void create() {
         shapeRenderer = new ShapeRenderer();
         gameLogic = new GameLogic(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        gameLogic.setMovementStrategy(snakeMovementStrategy);
     }
 
     // This render function is also called by LibGDX in the game pattern.
@@ -45,6 +48,10 @@ public class Game extends ApplicationAdapter {
     }
     private void drawFood() {
         gameLogic.renderFood(shapeRenderer);
+    }
+
+    public void setRandomMovement() {
+        this.snakeMovementStrategy = new RandomMovementStrategy();
     }
 
     // Clean the board and delete the existing renderer when exiting
