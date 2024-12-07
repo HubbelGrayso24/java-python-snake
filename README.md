@@ -1,64 +1,73 @@
-# CSCI 5448 Grad Project Implementation of Snake
-## Object-Oriented Programming in Java vs Python
+# CSCI 5448 Grad Project: Implementation of Snake and OOP Concepts
+This project demonstrates the use of Object-Oriented Programming (OOP) principles and multithreading/multiprocessing techniques in Python. It includes examples of encapsulation, inheritance, and polymorphism, as well as the implementation of the classic Snake game.
 
-### Overview
-This project demonstrates the implementation of the classic Snake game using Object-Oriented Programming (OOP) principles in both Java and Python. Below, we discuss the differences in OOP concepts and code implementation between these two languages.
+---
 
-### OOP Concepts in Java and Python
-- **Class Definitions**: Both Java and Python use classes to define objects. However, Java requires explicit declaration of class members and methods, while Python allows more flexibility with dynamic typing.
-- **Inheritance**: Both languages support inheritance, but Java uses explicit interfaces and abstract classes, whereas Python uses a more straightforward approach with base classes.
-- **Encapsulation**: Java enforces encapsulation with access modifiers (public, private, protected), while Python relies on naming conventions (single or double underscores) to indicate private members.
-- **Polymorphism**: Both languages support polymorphism, but Java requires method signatures to match exactly, while Python uses duck typing.
+## **1. Python OOP Examples**
+This section showcases key OOP principles: **Encapsulation**, **Inheritance**, and **Polymorphism**.
 
-### Code Implementation
+### **Encapsulation (`encapsulation.py`)**
+- Demonstrates controlled access to private attributes using Python's `@property` decorator.
+- The `Character` class encapsulates its health attribute, ensuring it cannot drop below zero.
+- **Key Features**:
+  - Encapsulation via protected attributes.
+  - Controlled access through getter and setter methods.
+- **Output**:
+  Displays initial health, updates after damage, and ensures health remains non-negative.
 
-#### Python Implementation
-In Python, the Snake game is implemented with concise and readable code. 
-Key components include:
-- **Game Loop**: Managed using the `pygame` library.
-- **Graphics**: Rendered using `pygame` surfaces and blitting.
-- **Event Handling**: Implemented with `pygame.event.get()` for user input.
+---
 
-Example snippet:
-```python
-import pygame
-import random
-import sys
+### **Inheritance (`inheritance.py`)**
+- Demonstrates inheritance using an `Animal` base class and its `Dog` and `Cat` subclasses.
+- The subclasses override the `speak` method to provide specific implementations.
+- **Key Features**:
+  - Reuse of a base class.
+  - Method overriding in child classes to showcase polymorphism.
+- **Output**:
+  Shows the unique behaviors of `Dog` and `Cat` through overridden methods.
 
-class Snake:
+---
 
-    def __init__(self):
-        self.body = [[gridWidth // 2, gridHeight // 2]]
-        self.direction = (0, 0)  # Don't start til keypress
-        self.grow = False
+### **Polymorphism (`polymorphism.py`)**
+- Demonstrates polymorphism with a `Shape` base class and its `Rectangle` and `Circle` subclasses.
+- Each subclass implements its own versions of `area` and `perimeter` methods.
+- **Key Features**:
+  - Use of a common interface (`Shape`) to handle different subclasses.
+  - Specific implementations of methods in child classes.
+- **Output**:
+  Computes and displays the area and perimeter of different shapes.
 
-    def move(self):
-        head_x, head_y = self.body[0]
-        delta_x, delta_y = self.direction
-        new_head = [head_x + delta_x, head_y + delta_y]
-        
-        if not self.grow:
-            self.body.pop()
-        else:
-            self.grow = False
-        self.body.insert(0, new_head)  
+---
 
-    def change_direction(self, new_direction):
-        opposite = (-self.direction[0], -self.direction[1])
-        if new_direction != opposite:  
-            self.direction = new_direction
-            
-    def grow_snake(self):
-        self.grow = True
+## **2. Multithreading and Multiprocessing Demos**
+### **File: `multiprocessingAndmultithreading_demo.py`**
+- Demonstrates sequential, multithreading, and multiprocessing execution models.
+- **Key Features**:
+  - A shared counter is incremented:
+    - Sequentially (no threads or processes).
+    - Using multithreading (multiple threads).
+    - Using multiprocessing (multiple processes).
+  - Execution times are measured and compared for all three methods.
+- **Output**:
+  - Displays the time taken for sequential execution, multithreading, and multiprocessing.
+  - Highlights the efficiency gains of parallelism over sequential execution.
 
-    def check_collision(self):
-        head = self.body[0]
-        if head in self.body[1:]:
-            return True
-        if head[0] < 0 or head[0] >= gridWidth or head[1] < 0 or head[1] >= gridHeight:
-            return True
-        return False
-```
+---
 
-### Conclusion
-While both Java and Python offer robust support for OOP, their approaches to implementing a game like Snake differ significantly. Java's strict type system and explicit class structures provide clarity and robustness, while Python's dynamic typing and concise syntax offer flexibility and ease of use. This project highlights the strengths and trade-offs of each language in the context of game development.
+## **3. Snake Game Implementation**
+### **File: `snake_game.py`**
+- Implements the classic Snake game using Pygame, showcasing how OOP principles like encapsulation and inheritance are applied in game development.
+- **Key Features**:
+  - A `Snake` class to manage the player's snake.
+  - A `Game` class to handle the game loop, user input, and rendering.
+  - Utilizes Pygame for graphical output and event handling.
+- **Usage**:
+  - Run the script to play the Snake game.
+  - Move the snake using arrow keys, and avoid collisions with the screen borders or the snake itself.
+- **Output**:
+  - Interactive game that ends when the snake collides with itself or the screen borders.
+
+---
+
+## **Conclusion**
+This project highlights Python's versatility in demonstrating OOP principles, implementing games, and leveraging multithreading/multiprocessing for parallelism. Each file serves as a standalone demonstration and can be run independently to explore these concepts in action.
