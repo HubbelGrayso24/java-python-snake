@@ -15,7 +15,7 @@ public class Snake implements Movable, Renderable {
     private final List<SnakeSegment> segments;
 
     private Direction direction = Direction.RIGHT;
-    private final MovementStrategy movementStrategy;
+    private MovementStrategy movementStrategy;
 
     private final float startX, startY;
 
@@ -128,5 +128,25 @@ public class Snake implements Movable, Renderable {
     public void reset() {
         segments.clear();
         segments.add(new SnakeSegment(startX, startY));
+    }
+
+    public int getLength() {
+        return segments.size();
+    }
+
+    public float getX() {
+        return getHead().getX();
+    }
+
+    public float getY() {
+        return getHead().getY();
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setMovementStrategy(MovementStrategy movementStrategy) {
+        this.movementStrategy = movementStrategy;
     }
 }
