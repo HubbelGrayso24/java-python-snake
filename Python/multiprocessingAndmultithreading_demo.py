@@ -2,22 +2,11 @@ import multiprocessing
 import threading
 import time
 """
-multiprocessing_demo.py
 This script demonstrates the use of multiprocessing and multithreading in Python to safely increment a shared counter using locks.
 
 Functions:
 - multiprocessing_worker(counter, lock, process_name): Worker function for multiprocessing that increments a shared counter safely using a lock.
 - threading_worker(counter, lock, thread_name): Worker function for multithreading that increments a shared counter safely using a lock.
-
-Main Execution:
-- Initializes and starts multiple processes to increment a shared counter using multiprocessing.
-- Initializes and starts multiple threads to increment a shared counter using multithreading.
-- Prints the final counter values for both multiprocessing and multithreading.
-
-Modules:
-- multiprocessing: Supports the spawning of processes using an API similar to the threading module.
-- threading: Constructs higher-level threading interfaces on top of the lower-level _thread module.
-- time: Provides various time-related functions.
 
 Usage:
 Run the script directly to see the demonstration of multiprocessing and multithreading.
