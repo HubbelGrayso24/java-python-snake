@@ -9,7 +9,7 @@ public class MultithreadedCounter {
         System.out.println(threadName + " incremented counter to " + counter);
     }
 
-    public synchronized void incrementSequential() {
+    public void incrementSequential() {
         counter++;
         System.out.println("Sequential increment: Counter incremented to " + counter);
     }
@@ -20,7 +20,6 @@ public class MultithreadedCounter {
 
     public static void main(String[] args) throws InterruptedException {
 
-        
         // Sequential Execution
         System.out.println("Starting Sequential Execution");
         MultithreadedCounter sequentialCounter = new MultithreadedCounter();
@@ -31,10 +30,6 @@ public class MultithreadedCounter {
         long seqEndTime = System.currentTimeMillis();
         System.out.println("Final Counter Value after Sequential Execution: " + sequentialCounter.getCounter());
         System.out.println("Time taken (Sequential): " + (seqEndTime - seqStartTime) + " ms\n");
-
-
-
-
 
 
 
