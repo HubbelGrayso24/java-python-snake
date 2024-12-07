@@ -39,7 +39,7 @@ There are also additional test files that demonstrate the functionality of speci
 from the io.hubbell.yuri.snake test package.
 
 There is also a demonstration of multithreading using a subpackage in the `core` module. This can be run from the
-`MultithreadingDemo` class in the `core` module.
+`MultithreadedCounter` class in the `core` module under the Demos directory.
 
 ## Game Description
 
