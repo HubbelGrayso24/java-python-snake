@@ -17,10 +17,10 @@ A Python project implementing the classic Snake game using Pygame.
 This project uses [Pygame](https://www.pygame.org/) for game development. Install the required dependencies using:
 
 ```sh
-pip install -r [requirements.txt](http://_vscodecontentref_/0)
+pip install -r requirements.txt
 ```
 
 To run the game:
 ```sh
-python [play_game.py](http://_vscodecontentref_/1)
+python play_game.py
 ```

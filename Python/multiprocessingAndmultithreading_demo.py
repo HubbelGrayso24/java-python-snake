@@ -1,0 +1,98 @@
+import multiprocessing
+import threading
+import time
+"""
+multiprocessing_demo.py
+This script demonstrates the use of multiprocessing and multithreading in Python to safely increment a shared counter using locks.
+
+Functions:
+- multiprocessing_worker(counter, lock, process_name): Worker function for multiprocessing that increments a shared counter safely using a lock.
+- threading_worker(counter, lock, thread_name): Worker function for multithreading that increments a shared counter safely using a lock.
+
+Main Execution:
+- Initializes and starts multiple processes to increment a shared counter using multiprocessing.
+- Initializes and starts multiple threads to increment a shared counter using multithreading.
+- Prints the final counter values for both multiprocessing and multithreading.
+
+Modules:
+- multiprocessing: Supports the spawning of processes using an API similar to the threading module.
+- threading: Constructs higher-level threading interfaces on top of the lower-level _thread module.
+- time: Provides various time-related functions.
+
+Usage:
+Run the script directly to see the demonstration of multiprocessing and multithreading.
+"""
+# Function for multiprocessing
+def multiprocessing_worker(counter, lock, process_name):
+    """Increment the counter safely using a lock in multiprocessing."""
+    for _ in range(5):
+        with lock:
+            counter.value += 1
+            print(f"{process_name} (Multiprocessing): Counter incremented to {counter.value}")
+        time.sleep(1)
+
+#  Function for multithreading
+def threading_worker(counter, lock, thread_name):
+    """Increment the counter safely using a lock in multithreading."""
+    for _ in range(5):
+        with lock:
+            counter[0] += 1
+            print(f"{thread_name} (Multithreading): Counter incremented to {counter[0]}")
+        time.sleep(1)
+
+if __name__ == "__main__":
+    print("Starting Multiprocessing Demo")
+    # Measure time for multiprocessing
+    mp_start_time = time.perf_counter()
+
+    # Multiprocessing setup
+    mp_counter = multiprocessing.Value('i', 0) 
+    mp_lock = multiprocessing.Lock()  
+    mp_processes = []
+
+    # Create 3 processes
+    for i in range(3):
+        process_name = f"Process-{i+1}"
+        process = multiprocessing.Process(target=multiprocessing_worker, args=(mp_counter, mp_lock, process_name))
+        mp_processes.append(process)
+
+    # Start and join multiprocessing processes
+    for process in mp_processes:
+        process.start()
+    for process in mp_processes:
+        process.join()
+
+    mp_end_time = time.perf_counter()
+    print(f"Final counter value (Multiprocessing): {mp_counter.value}")
+    print(f"Time taken (Multiprocessing): {mp_end_time - mp_start_time:.2f} seconds\n")
+
+
+
+    print("Starting Multithreading Demo")
+    # Measure time for multithreading
+    mt_start_time = time.perf_counter()
+
+    # Multithreading setup
+    thread_counter = [0]
+    thread_lock = threading.Lock()
+    threads = []
+
+    # Create 3 threads
+    for i in range(3):
+        thread_name = f"Thread-{i+1}"
+        thread = threading.Thread(target=threading_worker, args=(thread_counter, thread_lock, thread_name))
+        threads.append(thread)
+
+    # Start and join threads
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+
+    mt_end_time = time.perf_counter()
+    print(f"Final counter value (Multithreading): {thread_counter[0]}")
+    print(f"Time taken (Multithreading): {mt_end_time - mt_start_time:.2f} seconds\n")
+
+    # Compare efficiency
+    efficiency = (mp_end_time - mp_start_time) / (mt_end_time - mt_start_time)
+    print(f"Efficiency comparison (Multiprocessing/Multithreading): {efficiency}")
