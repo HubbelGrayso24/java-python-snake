@@ -67,7 +67,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 - **Output**:
     - Interactive game that ends when the snake collides with itself or the screen borders.
 
-For additional details on the snake game's implementation, see `Snake_README.md` [here](SnakeGame/Snake_README).
+For additional details on the snake game's implementation, see the `README.md` inside the SnakeGame directory [here](SnakeGame/README).
 
 ---
 
