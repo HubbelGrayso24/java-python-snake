@@ -1,4 +1,4 @@
-# CSCI 5448 Grad Project: Implementation of Snake and OOP Concepts
+# Python Implementation of Snake and OOP Concepts
 This project demonstrates the use of Object-Oriented Programming (OOP) principles and multithreading/multiprocessing techniques in Python. It includes examples of encapsulation, inheritance, and polymorphism, as well as the implementation of the classic Snake game.
 
 ---
@@ -6,7 +6,7 @@ This project demonstrates the use of Object-Oriented Programming (OOP) principle
 ## **1. Python OOP Examples**
 This section showcases key OOP principles: **Encapsulation**, **Inheritance**, and **Polymorphism**.
 
-### **Encapsulation (`encapsulation.py`)**
+### **Encapsulation (`samples/encapsulation.py`)**
 - Demonstrates controlled access to private attributes using Python's `@property` decorator.
 - The `Character` class encapsulates its health attribute, ensuring it cannot drop below zero.
 - **Key Features**:
@@ -17,7 +17,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 
 ---
 
-### **Inheritance (`inheritance.py`)**
+### **Inheritance (`samples/inheritance.py`)**
 - Demonstrates inheritance using an `Animal` base class and its `Dog` and `Cat` subclasses.
 - The subclasses override the `speak` method to provide specific implementations.
 - **Key Features**:
@@ -28,7 +28,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 
 ---
 
-### **Polymorphism (`polymorphism.py`)**
+### **Polymorphism (`samples/polymorphism.py`)**
 - Demonstrates polymorphism with a `Shape` base class and its `Rectangle` and `Circle` subclasses.
 - Each subclass implements its own versions of `area` and `perimeter` methods.
 - **Key Features**:
@@ -40,7 +40,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 ---
 
 ## **2. Multithreading and Multiprocessing Demos**
-### **File: `multiprocessingAndmultithreading_demo.py`**
+### **File: `demos/multiprocessingAndmultithreading_demo.py`**
 - Demonstrates sequential, multithreading, and multiprocessing execution models.
 - **Key Features**:
     - A shared counter is incremented:
@@ -55,7 +55,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 ---
 
 ## **3. Snake Game Implementation**
-### **File: `snake_game.py`**
+### **Directory: `SnakeGame`**
 - Implements the classic Snake game using Pygame, showcasing how OOP principles like encapsulation and inheritance are applied in game development.
 - **Key Features**:
     - A `Snake` class to manage the player's snake.
@@ -67,7 +67,7 @@ This section showcases key OOP principles: **Encapsulation**, **Inheritance**, a
 - **Output**:
     - Interactive game that ends when the snake collides with itself or the screen borders.
 
-For additional details on the snake game's implementation, see `Snake.md` [here](Snake.md).
+For additional details on the snake game's implementation, see `Snake_README.md` [here](SnakeGame/Snake_README).
 
 ---
 
