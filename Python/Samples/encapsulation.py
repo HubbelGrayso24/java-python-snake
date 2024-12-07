@@ -18,10 +18,10 @@ class Character:
 
 if __name__ == "__main__":
     hero = Character()
-    print(f"Initial Health: {hero.health}")  # Access health via getter
+    print(f"Initial Health: {hero.health}") 
 
-    hero.health -= 50  # Modify health via setter
+    hero.health -= 50  
     print(f"After Damage: {hero.health}")
 
-    hero.health -= 100  # Health cannot drop below 0
+    hero.health -= 100 
     print(f"After Heavy Damage: {hero.health}")
