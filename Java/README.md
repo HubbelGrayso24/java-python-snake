@@ -27,12 +27,12 @@ build.gradle file. The project is built using LibGDX. It was built using Intelli
 
 ## Running the Game
 
-To run the game, execute the main class `PlayGame` in the `desktop` module. This will launch the game
+To run the game, execute the main class `PlayGame` in the `lwjgl3` module, LibGDX's naming scheme. This will launch the game
 in a window. The game can be played using the arrow keys. There is no border collision detection, and
 the snake will wrap around the screen. The game will reset if the snake collides with itself. To quit,
 close the window, press ESC or press q.
 
-To observe the games functions in an amusing way, run the `PlayRandomGame` class in the `desktop` module.
+To observe the games functions in an amusing way, run the `PlayRandomGame` class in the `lwjgl3` module, LibGDX's naming scheme.
 This will launch a snake that moves randomly around the screen. It will continue until the game is exited.
 
 There are also additional test files that demonstrate the functionality of specifc components. These can be run
